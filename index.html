@@ -15,14 +15,14 @@
         <div id="Input">
             <form>
                 <label for="ActualTime" >Actual Time</label><br>
-                <input type="text" name="ActualTime" id="ActualTime"><br>
+                <input type="number" name="ActualTime" min="1" max="999" value="10" id="ActualTime"><br>
                 <button id="submitNewRow" type="button">Submit</button>
                 <button id="reset" type="button">Reset</button>
             </form>
             <section>
                 <label id="label" for="TaskSelect">Please Choose Tasks</label>
                 <select name="Tasks" id="Tasks">
-                    <option value="">Tasks</option>
+                    <!-- <option value="">Tasks</option> -->
                     <option value="10">Washing Dishes (10mins)</option>
                     <option value="15">Cleaning Room (15mins)</option>
                     <option value="20">Folding Laundry (20mins)</option>

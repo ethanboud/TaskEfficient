@@ -10,6 +10,7 @@ const reset = document.getElementById("reset")
 reset.addEventListener("click", function(){
     localStorage.removeItem('DailyEfficiency')
     location.reload()
+    localStorage.clear()
 })
 
 //WHEN SUBMIT BUTTON IS PUSHED , VALUE FROM DROPDOWN IS SENT TO LOCAL STORAGE
