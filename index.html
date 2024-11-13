@@ -12,19 +12,37 @@
     <header>
         <h1>Task Efficient</h1>
     </header>
-    <section>
-        <label for="Tasks">Choose a task:</label>
-        <select name="Tasks" id="Tasks" onchange="placeholder">
-            <option value="task-1">task 1</option>
-            <option value="task-2">task 2</option>
-            <option value="task-3">task 3</option>
-            <option value="task-4">task 4</option>
-            <option value="task-5">task 5</option>
-        </select>
-    </section>
-
+        <div id="Input">
+            <form>
+                <label for="ActualTime" >Actual Time</label><br>
+                <input type="text" name="ActualTime" id="ActualTime"><br>
+                <button id="submitNewRow" type="button">Submit</button>
+                <button id="reset" type="button">Reset</button>
+            </form>
+            <section>
+                <label id="label" for="TaskSelect">Please Choose Tasks</label>
+                <select name="Tasks" id="Tasks">
+                    <option value="">Tasks</option>
+                    <option value="10">Washing Dishes (10mins)</option>
+                    <option value="15">Cleaning Room (15mins)</option>
+                    <option value="20">Folding Laundry (20mins)</option>
+                    <option value="45">Making Dinner (45mins)</option>
+                    <option value="60">Shopping (60mins)</option>
+                </select>
+            </section>
+        </div>
     <!-- Main Content Section -->
     <main>
+        <table id="table">
+            <th id="th">Outputs</th>
+            <tr id="Static">
+                <td id="td1">Expected Task Time</td>
+                <td id="td2">Efficiency</td>
+                <td id="spacer"></td>
+                <td id="td3">Daily Efficiency</td>
+            </tr>
+        </table>
+
         <section>
             <h2>Section Title</h2>
             <p>This is a paragraph of text in the section
