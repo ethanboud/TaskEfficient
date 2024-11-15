@@ -5,22 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Efficient</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <title> tailwind </title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     
 </head>
-<body>
-    <!-- Header Section -->
+
+    
     <header>
-        <h1>Task Efficient</h1>
-    </header>
+        <h1 class=" border-8 border-blue-400 font-mono bg-indigo-900 text-white text-5xl font-bold">Task Efficient</h1>
+    </header>   
+
+   
+    
         <div id="Input">
+            <body class="bg-indigo-200">
             <form>
-                <label for="ActualTime" >Actual Time</label><br>
-                <input type="number" name="ActualTime" min="1" max="999" value="10" id="ActualTime"><br>
-                <button id="submitNewRow" type="button">Submit</button>
-                <button id="reset" type="button">Reset</button>
+                <label for="ActualTime" class="font-mono font-bold text-indigo-900">Actual Time:</label><br>
+
+                <input type="text" name="ActualTime" id="ActualTime"><br>
+                <button id="submitNewRow" type="button" class="border-2 bg-blue-400 border-indigo-900 text-white px-4 py-2 rounded-lg hover:bg-blue-300">
+                    Submit
+                  </button>
+                  
+                <button id="reset" type="button" class="border-2 bg-blue-400 border-indigo-900 text-white px-4 py-2 rounded-lg hover:bg-blue-300">
+                    Reset    
+                </button></bu>
             </form>
             <section>
-                <label id="label" for="TaskSelect">Please Choose Tasks</label>
+                <label id="label" for="TaskSelect" class="text-indigo-900 font-mono font-bold">Please Choose a Task</label>
                 <select name="Tasks" id="Tasks">
                     <option value="">Tasks</option>
                     <option value="10">Washing Dishes (10mins)</option>
@@ -30,24 +42,72 @@
                     <option value="60">Shopping (60mins)</option>
                 </select>
             </section>
+        </body>
         </div>
+            
     <!-- Main Content Section -->
-    <main>
-        <table id="table">
-            <th id="th">Outputs</th>
-            <tr id="Static">
-                <td id="td1">Expected Task Time</td>
-                <td id="td2">Efficiency</td>
-                <td id="spacer"></td>
-                <td id="td3">Daily Efficiency</td>
-            </tr>
-        </table>
+    <thead class="border-8 border-blue-400 text-white text-4xl text-center">
+</thead>
+<table class="table-auto w-full border-collapse bg-indigo-900 ">
+        <thead id='table' class="border-8 border-blue-400 text-white text-4xl text-center">
+        <tr>
+            <th id='td1' class="text-white font-mono underline text-2xl">Expected Task Time:</th>
+            <th id='td2' class="text-white font-mono underline text-2xl">Efficiency:</th>
+            <th id='td3' class="text-white font-mono underline text-2xl">Daily Efficiency:</th>
+         </tr>
+        </thead>
+         
 
-        <section>
-            <h2>Section Title</h2>
-            <p>This is a paragraph of text in the section
-        </section>
+            
 
-    </main> 
-    <script src="./assets/js/script.js"></script>
+            
+        
+            
+    <!-- <tbody>
+    <tr>
+            <td class="border-b px-4 py-6"></td>
+            <td class="border-b px-4 py-6"></td>
+            <td class="border-b px-4 py-6"></td>
+    </tr>
+    <tr>
+        <td class="border-b px-4 py-6"></td>
+        <td class="border-b px-4 py-6"></td>
+        <td class="border-b px-4 py-6"></td>
+    </tr>
+        <tr>
+        <td class="border-b px-4 py-6"></td>
+        <td class="border-b px-4 py-4"></td>
+        <td class="border-b px-4 py-6"></td>
+    </tr>
+    </tbody> -->
+    </table>
+            
+        
+            
+                
+            
+
+                
+                
+    
+            
+
+        
+
+
+
+
+
+
+
+
+
+       
+
+ 
+<script src="./assets/js/script.js"></script>
 </body>
+    
+
+                
+                
