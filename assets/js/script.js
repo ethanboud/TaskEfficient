@@ -10,6 +10,7 @@ const reset = document.getElementById("reset")
 reset.addEventListener("click", function(){
     localStorage.removeItem('DailyEfficiency')
     location.reload()
+    localStorage.clear()
 })
 
 //WHEN SUBMIT BUTTON IS PUSHED , VALUE FROM DROPDOWN IS SENT TO LOCAL STORAGE
@@ -112,12 +113,13 @@ submit.addEventListener("click", function (){
     const newRow = table.insertRow(-1)
     const cell1 = newRow.insertCell(0)
     const cell2 = newRow.insertCell(1)
-    const cell3 = newRow.insertCell(2)
-    const cell4 = newRow.insertCell(3)
+    // const cell3 = newRow.insertCell(2)
+    const cell4 = newRow.insertCell(2)
     cell1.innerHTML = expectedTime
     cell2.innerHTML = userEfficiency
-    cell3.innerHTML = ""
+    // cell3.innerHTML = ""
     cell4.innerHTML = dailyAverage
+    newRow.setAttribute("class", "border-b-8 border-white bg-blue-400");
 })
 
 
