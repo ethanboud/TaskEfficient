@@ -137,3 +137,32 @@ submit.addEventListener("click", function (){
         cell4.innerHTML = dailyAverage
     }
 })
+
+const modalButton = document.getElementById("modalButton");
+const modalContainer = document.getElementById("modalContainer");
+const span = document.getElementsByClassName("close")[0];
+
+
+function appendDaily (){
+    let x = localStorage.getItem('TrueCount');
+    let y = localStorage.getItem('DailyAverage');
+    let average = document.getElementById("y");
+    average.textContent = `${y}`;
+    let tasks = document.getElementById("x");
+    tasks.textContent = `${x}`;
+}
+
+modalButton.onclick = function() {
+    modalContainer.style.display = "block";
+    appendDaily();
+}
+
+span.onclick = function() {
+    modalContainer.style.display = "none";
+  }
+
+window.onclick = function(event) {
+    if (event.target == modalContainer) {
+        modalContainer.style.display = "none";
+    }
+  }
