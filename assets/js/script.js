@@ -5,6 +5,11 @@ const submit = document.getElementById("submitNewRow")
 const actualInput = document.getElementById("ActualTime")
 const reset = document.getElementById("reset")
 
+//LOADS THE ARRAY FOR EFFICIENCY BEFORE ANYTHING ELSE ***BECAUSE???***
+let efficiency = localStorage.getItem('taskEfficiency')
+let dailyEffArray = JSON.parse(localStorage.getItem('DailyEfficiency')) || []
+dailyEffArray.push(Math.round(efficiency))
+localStorage.setItem('DailyEfficiency', JSON.stringify(dailyEffArray))
 
 //FUNCTION TO BOTH CLEAR THE EFFICIENCY ARRAY AND REFRESH WEBPAGE WHEN RESET BUTTON PRESSED
 reset.addEventListener("click", function(){
@@ -31,6 +36,20 @@ submit.addEventListener("click", function(){
 
 //PULLS FROM LOCAL STORAGE AND RUNS CALC TO FIND TASK EFFICIENCY PERCENTAGE
 submit.addEventListener("click", function () {
+
+    let array = JSON.parse(localStorage.getItem('DailyEfficiency'))
+
+    let counter = array.filter(Boolean).filter(num => num !== 0).length
+    const b = 1
+    result = count(counter, b)
+    localStorage.setItem('TrueCount', result)
+    console.log(result)
+    
+    function count(counter, b){
+        return counter += b
+        
+    }
+
     let expectedTime = localStorage.getItem('TaskValue')
         if (expectedTime){
             expectedTime = JSON.parse(expectedTime)
@@ -49,7 +68,7 @@ submit.addEventListener("click", function () {
         let dailyEffArray = JSON.parse(localStorage.getItem('DailyEfficiency')) || []
         dailyEffArray.push(Math.round(efficiency))
         localStorage.setItem('DailyEfficiency', JSON.stringify(dailyEffArray))
-    })
+})
 
 // SUM ALL EFFICIENCIES, AVERAGE THEM, PUSH OUT TO 'DAILY EFFICIENCY BOX'
 submit.addEventListener("click", function(){
@@ -63,16 +82,6 @@ submit.addEventListener("click", function(){
     localStorage.setItem('RollingEffAverage', JSON.stringify(sum))
 })
 
-//COUNTS HOW MANY TIMES SUBMIT IS CLICKED
-let count = 0
-
-submit.addEventListener("click", () => {
-    count++
-    console.log(count)
-    localStorage.setItem('SubmitButtonCount', JSON.stringify(count))
-
-})
-
 //DIVIDS ROLLING EFFICIENCY BY BUTTON COUNT
 submit.addEventListener("click", function(){
     let rollingEff = localStorage.getItem('RollingEffAverage')
@@ -80,12 +89,9 @@ submit.addEventListener("click", function(){
             rollingEff = JSON.parse(rollingEff)
         }
 
-    let btnCount = localStorage.getItem('SubmitButtonCount')
-        if (btnCount){
-            btnCount = JSON.parse(btnCount)
-        }
+    let effArrayLength = localStorage.getItem('TrueCount')
 
-    dailyEff = rollingEff / btnCount
+    dailyEff = rollingEff / effArrayLength
     console.log('Your daily efficiency is', dailyEff)
     localStorage.setItem('DailyAverage', JSON.stringify(Math.round(dailyEff)))
 })
@@ -93,6 +99,8 @@ submit.addEventListener("click", function(){
 //PULLS FROM LOCAL STORAGE AND CREATES THEN INPUTS EXPECTED VALUE AND ACTUAL VALUE
 //ADDS NEW CELLS IN TABLE FOR NEW TASK DATA [EXPECTED] [ACTUAL]
 submit.addEventListener("click", function (){
+
+
     let userEfficiency = localStorage.getItem('taskEfficiency')
         if (userEfficiency === isNaN(userEfficiency)){
             location.reload()
@@ -115,96 +123,45 @@ submit.addEventListener("click", function (){
     const cell2 = newRow.insertCell(1)
     const cell3 = newRow.insertCell(2)
     const cell4 = newRow.insertCell(3)
+
     cell1.innerHTML = expectedTime
     cell2.innerHTML = userEfficiency
-    cell3.innerHTML = ""
-    cell4.innerHTML = dailyAverage
+    cell3.innerHTML = dailyAverage
+    cell1.innerHTML = expectedTime
+    cell2.innerHTML = userEfficiency
+
+    if (dailyAverage === 0 || dailyAverage === null || dailyAverage === undefined){
+
+    }else{
+        cell3.innerHTML = dailyAverage
+    }
 })
 
+const modalButton = document.getElementById("modalButton");
+const modalContainer = document.getElementById("modalContainer");
+const span = document.getElementsByClassName("close")[0];
 
 
+function appendDaily (){
+    let x = localStorage.getItem('TrueCount');
+    let y = localStorage.getItem('DailyAverage');
+    let average = document.getElementById("y");
+    average.textContent = `${y}`;
+    let tasks = document.getElementById("x");
+    tasks.textContent = `${x}`;
+}
 
+modalButton.onclick = function() {
+    modalContainer.style.display = "block";
+    appendDaily();
+}
 
+span.onclick = function() {
+    modalContainer.style.display = "none";
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let allExpected = 0
-// let allActual = 0
-
-// let actualTime = 10  //WE WILL LINK THIS VALUE FROM INPUT FIELD IN HTML
-// let selectedTask = task.addEventListener.selectedTask
-// parseInt(selectedTask)
-// console.log(selectedTask)
-
-// function calcEff (selectedTask, actualTime){
-//     efficiency = selectedTask/actualTime;
-//     allExpected += selectedTask;
-//     allActual += actualTime;
-//     efficiency *= 100
-//     Math.round(efficiency)
-//     console.log('Your task efficiency is', efficiency, '%')
-// //    calcTotalEff()
-//     console.log('...........................................................')
-// }
-
-// calcEff(selectedTask,actualTime)
-
-
-
-
-// function dataTable (){
-//     const table = document.getElementById("table");
-//     const row = document.getElementById("tr");
-//     const td = document.getElementById("td1")
-
-// //    td1.innerHTML = //OUTPUT FROM FUNCTION
-// }
-
-// let allExpected = 0
-// let allActual = 0
-
-// function calcEff (expectedTime, actualTime){
-//     efficiency = expectedTime/actualTime;
-//     allExpected += expectedTime;
-//     allActual += actualTime;
-//     efficiency *= 100
-//     Math.round(efficiency)
-//     console.log('Your task efficiency is', efficiency, '%')
-//     calcTotalEff()
-//     console.log('...........................................................')
-// }
-
-// calcEff (task1,100)
-
-
-// function calcTotalEff (){
-//     dailyEfficiency = allExpected/allActual;
-//     dailyEfficiency *= 100
-//     Math.round(dailyEfficiency)
-//     console.log('Your new daily percent is', dailyEfficiency, '%')
-// }
-
+window.onclick = function(event) {
+    if (event.target == modalContainer) {
+        modalContainer.style.display = "none";
+    }
+  }
