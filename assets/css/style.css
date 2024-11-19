@@ -1,0 +1,74 @@
+
+
+
+header{
+    text-align: center;
+    
+    padding:20px;
+}
+
+ #Input{
+    
+    text-align:center;
+    padding-bottom: 150px; 
+} 
+
+section{
+    padding:20px;
+}
+
+#label{
+    padding:2px;
+   
+}
+
+form{
+    padding:20px;
+    display:inline-block;
+}
+
+main{
+    text-align: center;
+    
+    padding: 20px;
+}
+
+#table{
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    
+    padding: 20px;
+}
+
+#th{
+    
+    
+}
+
+#Static{
+    border-bottom: white;
+    padding: 10px 10px 10px 0px;
+}
+
+#tr{
+    border-bottom: white;
+    
+}
+
+td{
+    
+}
+
+#spacer{
+   
+    padding-left:30px;
+    padding-right:30px;
+}
+
+#newRow{
+    margin: 30px;
+}
+.bottomborder {
+    border-bottom: white;
+}

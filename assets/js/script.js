@@ -5,11 +5,14 @@ const submit = document.getElementById("submitNewRow")
 const actualInput = document.getElementById("ActualTime")
 const reset = document.getElementById("reset")
 
+<<<<<<< HEAD
 //LOADS THE ARRAY FOR EFFICIENCY BEFORE ANYTHING ELSE ***BECAUSE???***
 let efficiency = localStorage.getItem('taskEfficiency')
 let dailyEffArray = JSON.parse(localStorage.getItem('DailyEfficiency')) || []
 dailyEffArray.push(Math.round(efficiency))
 localStorage.setItem('DailyEfficiency', JSON.stringify(dailyEffArray))
+=======
+>>>>>>> main
 
 //FUNCTION TO BOTH CLEAR THE EFFICIENCY ARRAY AND REFRESH WEBPAGE WHEN RESET BUTTON PRESSED
 reset.addEventListener("click", function(){
@@ -36,6 +39,7 @@ submit.addEventListener("click", function(){
 
 //PULLS FROM LOCAL STORAGE AND RUNS CALC TO FIND TASK EFFICIENCY PERCENTAGE
 submit.addEventListener("click", function () {
+<<<<<<< HEAD
 
     let array = JSON.parse(localStorage.getItem('DailyEfficiency'))
 
@@ -50,6 +54,8 @@ submit.addEventListener("click", function () {
         
     }
 
+=======
+>>>>>>> main
     let expectedTime = localStorage.getItem('TaskValue')
         if (expectedTime){
             expectedTime = JSON.parse(expectedTime)
@@ -68,7 +74,10 @@ submit.addEventListener("click", function () {
         let dailyEffArray = JSON.parse(localStorage.getItem('DailyEfficiency')) || []
         dailyEffArray.push(Math.round(efficiency))
         localStorage.setItem('DailyEfficiency', JSON.stringify(dailyEffArray))
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     })
 
 // SUM ALL EFFICIENCIES, AVERAGE THEM, PUSH OUT TO 'DAILY EFFICIENCY BOX'
@@ -83,6 +92,19 @@ submit.addEventListener("click", function(){
     localStorage.setItem('RollingEffAverage', JSON.stringify(sum))
 })
 
+<<<<<<< HEAD
+=======
+//COUNTS HOW MANY TIMES SUBMIT IS CLICKED
+let count = 0
+
+submit.addEventListener("click", () => {
+    count++
+    console.log(count)
+    localStorage.setItem('SubmitButtonCount', JSON.stringify(count))
+
+})
+
+>>>>>>> main
 //DIVIDS ROLLING EFFICIENCY BY BUTTON COUNT
 submit.addEventListener("click", function(){
     let rollingEff = localStorage.getItem('RollingEffAverage')
@@ -90,9 +112,18 @@ submit.addEventListener("click", function(){
             rollingEff = JSON.parse(rollingEff)
         }
 
+<<<<<<< HEAD
     let effArrayLength = localStorage.getItem('TrueCount')
 
     dailyEff = rollingEff / effArrayLength
+=======
+    let btnCount = localStorage.getItem('SubmitButtonCount')
+        if (btnCount){
+            btnCount = JSON.parse(btnCount)
+        }
+
+    dailyEff = rollingEff / btnCount
+>>>>>>> main
     console.log('Your daily efficiency is', dailyEff)
     localStorage.setItem('DailyAverage', JSON.stringify(Math.round(dailyEff)))
 })
@@ -100,8 +131,11 @@ submit.addEventListener("click", function(){
 //PULLS FROM LOCAL STORAGE AND CREATES THEN INPUTS EXPECTED VALUE AND ACTUAL VALUE
 //ADDS NEW CELLS IN TABLE FOR NEW TASK DATA [EXPECTED] [ACTUAL]
 submit.addEventListener("click", function (){
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> main
     let userEfficiency = localStorage.getItem('taskEfficiency')
         if (userEfficiency === isNaN(userEfficiency)){
             location.reload()
@@ -122,6 +156,7 @@ submit.addEventListener("click", function (){
     const newRow = table.insertRow(-1)
     const cell1 = newRow.insertCell(0)
     const cell2 = newRow.insertCell(1)
+<<<<<<< HEAD
     const cell3 = newRow.insertCell(2)
     const cell4 = newRow.insertCell(3)
 
@@ -130,3 +165,101 @@ submit.addEventListener("click", function (){
     cell3.innerHTML = ""
     cell4.innerHTML = dailyAverage
 })
+=======
+    // const cell3 = newRow.insertCell(2)
+    const cell4 = newRow.insertCell(2)
+    cell1.innerHTML = expectedTime
+    cell2.innerHTML = userEfficiency
+    // cell3.innerHTML = ""
+    cell4.innerHTML = dailyAverage
+    newRow.setAttribute("class", "border-b-8 border-white bg-blue-400");
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let allExpected = 0
+// let allActual = 0
+
+// let actualTime = 10  //WE WILL LINK THIS VALUE FROM INPUT FIELD IN HTML
+// let selectedTask = task.addEventListener.selectedTask
+// parseInt(selectedTask)
+// console.log(selectedTask)
+
+// function calcEff (selectedTask, actualTime){
+//     efficiency = selectedTask/actualTime;
+//     allExpected += selectedTask;
+//     allActual += actualTime;
+//     efficiency *= 100
+//     Math.round(efficiency)
+//     console.log('Your task efficiency is', efficiency, '%')
+// //    calcTotalEff()
+//     console.log('...........................................................')
+// }
+
+// calcEff(selectedTask,actualTime)
+
+
+
+
+// function dataTable (){
+//     const table = document.getElementById("table");
+//     const row = document.getElementById("tr");
+//     const td = document.getElementById("td1")
+
+// //    td1.innerHTML = //OUTPUT FROM FUNCTION
+// }
+
+// let allExpected = 0
+// let allActual = 0
+
+// function calcEff (expectedTime, actualTime){
+//     efficiency = expectedTime/actualTime;
+//     allExpected += expectedTime;
+//     allActual += actualTime;
+//     efficiency *= 100
+//     Math.round(efficiency)
+//     console.log('Your task efficiency is', efficiency, '%')
+//     calcTotalEff()
+//     console.log('...........................................................')
+// }
+
+// calcEff (task1,100)
+
+
+// function calcTotalEff (){
+//     dailyEfficiency = allExpected/allActual;
+//     dailyEfficiency *= 100
+//     Math.round(dailyEfficiency)
+//     console.log('Your new daily percent is', dailyEfficiency, '%')
+// }
+
+>>>>>>> main
