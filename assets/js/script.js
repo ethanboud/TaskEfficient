@@ -68,7 +68,7 @@ submit.addEventListener("click", function () {
         let dailyEffArray = JSON.parse(localStorage.getItem('DailyEfficiency')) || []
         dailyEffArray.push(Math.round(efficiency))
         localStorage.setItem('DailyEfficiency', JSON.stringify(dailyEffArray))
-    })
+})
 
 // SUM ALL EFFICIENCIES, AVERAGE THEM, PUSH OUT TO 'DAILY EFFICIENCY BOX'
 submit.addEventListener("click", function(){
@@ -126,14 +126,13 @@ submit.addEventListener("click", function (){
 
     cell1.innerHTML = expectedTime
     cell2.innerHTML = userEfficiency
-    cell3.innerHTML = ""
+    cell3.innerHTML = dailyAverage
     cell1.innerHTML = expectedTime
     cell2.innerHTML = userEfficiency
-    cell3.innerHTML = ""
 
     if (dailyAverage === 0){
 
     }else{
-        cell4.innerHTML = dailyAverage
+        cell3.innerHTML = dailyAverage
     }
 })
