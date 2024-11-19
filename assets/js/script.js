@@ -130,7 +130,7 @@ submit.addEventListener("click", function (){
     cell1.innerHTML = expectedTime
     cell2.innerHTML = userEfficiency
 
-    if (dailyAverage === 0){
+    if (dailyAverage === 0 || dailyAverage === null || dailyAverage === undefined){
 
     }else{
         cell3.innerHTML = dailyAverage
