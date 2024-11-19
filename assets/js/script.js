@@ -131,7 +131,7 @@ submit.addEventListener("click", function (){
     cell2.innerHTML = userEfficiency
     cell3.innerHTML = ""
 
-    if (dailyAverage === 0){
+    if (dailyAverage === 0 || dailyAverage === null || dailyAverage === undefined){
 
     }else{
         cell4.innerHTML = dailyAverage
